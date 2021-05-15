@@ -1,29 +1,39 @@
 import java.io.File
 
-// 제이슨 데이타 안에 삽입되는 내용은 농장안에 품목등 아무거나 적어도좋음
+// 사용자에게 입력받고 그것을 파일에 저장하는 기능을 구현해 볼 것
+// 입력받고 싶은 것 : 가게이름, 가게 위치, 배송여부
 
-// "/farmRepository/farm/introduce/data/detail/farmDetail.json"
-
-// 위 경로에 제이슨 생성
 
 
 fun main(){
-    farmDetail()
+
+
+    print("가게 이름을 입력해 주세요: ")
+    val storeName = readLine()!!.trim()
+    print("가게 위치를 입력해 주세요: ")
+    val location = readLine()!!.trim()
+    print("배달 여부를 입력해 주세요: ")
+    val delivery = readLine()!!.trim()  // Y/N 으로 입력받기
+
+
+    farmDetail(storeName, location, delivery)
 
 }
 
 
-fun farmDetail(){
+fun farmDetail(storeName: String, location: String, delivery: String){
 
     var farmDetail = ""
-    farmDetail += "{ \r\n"
-    farmDetail += "\"가게이름\" : \"윤이나 농장\", \r\n"
-    farmDetail += "\"파는 물건\" : \"농산물, 해산물\", \r\n"
-    farmDetail += "\"배송여부\" : true \r\n"
-    farmDetail += "}"
+
+    farmDetail +="{ \r\n"
+    farmDetail +="\t \"가게 이름\" : \"$storeName\", \r\n "
+    farmDetail +="\t \"가게 위치\" : \"$location\", \r\n "
+    farmDetail +="\t \"가게 여부\" : \"$delivery\" \r\n "
+    farmDetail +="}"
 
 
-    File("farmRepository/farm/introduce/data/detail/farmDetail.json").parentFile.mkdirs()
-    File("farmRepository/farm/introduce/data/detail/farmDetail.json").writeText(farmDetail)
+
+    File("farmRepository/farm/introduce/data/detail/farmDetail.json").parentFile.mkdirs() // 폴더 만들기
+    File("farmRepository/farm/introduce/data/detail/farmDetail2.json").writeText(farmDetail) // 파일 만들기
 
 }
