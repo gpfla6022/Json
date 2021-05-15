@@ -1,86 +1,43 @@
 import java.io.File
 
 fun main(){
-    //testWriteFile();
-    // testWriteFile2();
-    //testWriteFile3();
-    testReadFile();
+
+    zooJson()
+
+}
+fun zooJson() {
+
+    var testZoo = ""
+
+    testZoo += "{\r\n"
+    testZoo += "\"우리 동물원 1번\": \"사파리\", \r\n"
+    testZoo += "\t \"사파리 동물\": { \r\n"
+    testZoo +=  "\t\t \"육식동물 1\" : \"사자\",\r\n"
+    testZoo += "\t\t \"육식동물 2\" : \"호랑이\",\r\n"
+    testZoo += "\t\t \"초식동물 1\" : \"기린\",\r\n"
+    testZoo += "\t\t \"초식동물 2\" : \"코끼리\"\r\n"
+    testZoo +=  "}, \r\n"
+    testZoo += "\"우리 동물원 2번\": \"아쿠아리움\", \r\n"
+    testZoo += "\t \"아쿠아리움 물고기\": {\r\n"
+    testZoo += "\t\t \"열대어 1\" : \"구피\",\r\n"
+    testZoo += "\t\t \"열대어 2\" : \"플래티\",\r\n"
+    testZoo += "\t\t \"해수어 1\" : \"상어\",\r\n"
+    testZoo += "\t\t \"해수어 2\" : \"돌고래\"\r\n"
+    testZoo += "}, \r\n"
+    testZoo += "\"우리 동물원 3번\": \"아기동물\", \r\n"
+    testZoo += "\t \"사파이 아기동물\": {\r\n"
+    testZoo += "\t\t \"사자\" : \"3개월\",\r\n"
+    testZoo += "\t\t \"호랑이\" : \"8개월\"\r\n"
+    testZoo += "}, \r\n"
+    testZoo += "\"직원\" : [\"짱구\", \"철수\", \"맹구\", \"유리\", \"훈이\"], \r\n"
+    testZoo += "\"월급\" : true, \r\n"
+    testZoo += "\"연봉\" : 3000, \r\n"
+    testZoo += "\"연봉 상승률\" : 2.5, \r\n"
+    testZoo += "\"월 광관객  수\" : \"50000명\" \r\n"
+    testZoo += "}"
+
+    File("test/testZoo2.json").writeText(testZoo)
+
+
 }
 
-data class testArticle(
-    val id:Int,
-    val title: String,
-    val body: String
-) {
-    fun toJson(): String {
-        var jsonStr = ""
-
-        jsonStr += "{"
-        jsonStr += "\n"
-
-        jsonStr += "\t" + """ "id":1, """.trim()
-
-        jsonStr += "\n"
-
-        jsonStr += "\t" + """ "title":"$title", """.trim()
-
-        jsonStr += "\n"
-
-        jsonStr += "\t" + """ "body":"$body" """.trim()
-
-        jsonStr += "\n"
-
-        jsonStr += "}"
-
-
-        return jsonStr
-
-    }
-}
-
-fun testReadFile(){
-    testWriteFile()
-
-
-    val fileContent = File("test/1.text").readText(Charsets.UTF_8)
-
-    print("test/1.text의 내용 : $fileContent")
-}
-
-
-
-
-
-
-
-
-
-fun testWriteFile3(){
-
-    val testArticle = testArticle(1, "제목1", "내용1")
-
-    File("test/3.json").writeText(testArticle.toJson())
-}
-
-fun testWriteFile2(){
-    val id = 1
-    val title = "안녕하세요, 저는, age = 33"
-    val body = "내용"
-
-    var fileContent = ""
-    fileContent += "{"
-    fileContent += "\n"
-    fileContent +=  "\t" + """ "id":$id, """.trim()
-    fileContent += "\n"
-    fileContent += "\t" + """ "title":$title, """.trim()
-    fileContent += "\n"
-    fileContent += "\t" + """ "body":$body """.trim()
-    fileContent += "\n"
-    fileContent += "}"
-
-    File("test/1.text").writeText(fileContent)
-}
-
-fun testWriteFile() {
-    File("test/1.text").writeText("안녕하세요.")
-}
