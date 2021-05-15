@@ -10,19 +10,28 @@ fun main(){
 
 fun zooHtml(){
 
-    var testZoo = "<!DOCTYPE html>"
+    var testZoo = ""
 
+    testZoo += "<!DOCTYPE html>\r\n"
+    testZoo += "<html> \r\n"
     testZoo += "<head> \r\n"
-    testZoo += "<meta charset = \"UTF-8\"> \r\n"
+    testZoo += "\t <meta charset = \"UTF-8\"> \r\n"
     testZoo += "\t <title> 우리 동물원 </title>\r\n"
     testZoo += "</head> \r\n"
     testZoo += "<body>\r\n"
-    testZoo += "<h1>우리 동물원</h1>\r\n"
+    testZoo += "\t <h1>우리 동물원</h1>\r\n"
     testZoo += "\t <div>사파리</div>\r\n"
     testZoo += "\t <div>아쿠아리움</div>\r\n"
     testZoo += "\t <div>아기동물</div>\r\n"
     testZoo += "</body> \r\n"
     testZoo += "</html> \r\n"
+
+
+
+
+
+    //file함수의 메소드와 유사
+    File("test").mkdirs()
 
 
     File("test/testZoo.html").writeText(testZoo)
@@ -60,7 +69,10 @@ fun zooJson() {
     testZoo += "\"월 광관객  수\" : \"50000명\" \r\n"
     testZoo += "}"
 
-    File("test/testZoo2.json").writeText(testZoo)
+
+    File("test/JSONDATA/testZoo2.json").parentFile.mkdirs()
+
+    File("test/JSONDATA/testZoo2.json").writeText(testZoo)
 
 
 }
