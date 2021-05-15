@@ -3,8 +3,32 @@ import java.io.File
 fun main(){
 
     zooJson()
+    zooHtml()
 
 }
+
+
+fun zooHtml(){
+
+    var testZoo = "<!DOCTYPE html>"
+
+    testZoo += "<head> \r\n"
+    testZoo += "<meta charset = \"UTF-8\"> \r\n"
+    testZoo += "\t <title> 우리 동물원 </title>\r\n"
+    testZoo += "</head> \r\n"
+    testZoo += "<body>\r\n"
+    testZoo += "<h1>우리 동물원</h1>\r\n"
+    testZoo += "\t <div>사파리</div>\r\n"
+    testZoo += "\t <div>아쿠아리움</div>\r\n"
+    testZoo += "\t <div>아기동물</div>\r\n"
+    testZoo += "</body> \r\n"
+    testZoo += "</html> \r\n"
+
+
+    File("test/testZoo.html").writeText(testZoo)
+
+}
+
 fun zooJson() {
 
     var testZoo = ""
